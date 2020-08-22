@@ -20,15 +20,12 @@ jobs:
       - name: Build Static Files
         run: yarn build
 
-      - name: Add CNAME to Build
-        run: cp CNAME public/.
-
       - name: Prepare Commit
         run: |
           cd public
           git init .
           git add --all
-          git -c user.email=asceresini@gmail.com user.name='GitHub Actions' commit -m "Site update at ${DATE}"
+          git -c user.email=asceresini@gmail.com -c user.name='GitHub Actions' commit -m "Site update at ${DATE}"
 
       - name: Force Push
         env:
