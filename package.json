@@ -5,12 +5,12 @@
   "version": "0.1.0",
   "license": "0BSD",
   "scripts": {
-    "build": "gatsby build",
-    "develop": "gatsby develop",
-    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
+    "build": "npx gatsby build",
+    "develop": "npx gatsby develop",
+    "format": "npx prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
     "start": "npm run develop",
-    "serve": "gatsby serve",
-    "clean": "gatsby clean",
+    "serve": "npx gatsby serve",
+    "clean": "npx gatsby clean",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
   },
   "dependencies": {
@@ -19,6 +19,7 @@
     "react-dom": "^16.12.0"
   },
   "devDependencies": {
+    "gatsby-cli": "^2.12.87",
     "prettier": "2.0.5"
   },
   "repository": {
