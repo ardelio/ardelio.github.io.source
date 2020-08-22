@@ -1,5 +1,5 @@
 import React from "react"
 
-export default function Home() {
+export default function PrivacyPolicy() {
   return <div>Coming soon!</div>
 }
