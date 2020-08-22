@@ -5,10 +5,24 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
+
+      - name: Cache Node Modules
+        id: cache-node-modules
+        uses: actions/cache@v2
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-modules
+
+      - name: Install Node Modules
+        if: steps.cache-node-modules.outputs.cache-hit != 'true'
+        run: yarn
+
       - name: build
         run: yarn build
+
       - name: add:cname
         run: cp CNAME public/.
+
       - name: publish
         uses: johno/actions-push-subdirectories@master
         env:
