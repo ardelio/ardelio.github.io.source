@@ -23,10 +23,17 @@ jobs:
       - name: Add CNAME to Build
         run: cp CNAME public/.
 
-      - name: Publish
-        uses: johno/actions-push-subdirectories@master
+      - name: Prepare Commit
+        run: |
+          cd public
+          git init .
+          git add --all
+          git -c user.email=asceresini@gmail.com user.name='GitHub Actions' commit -m "Site update at ${DATE}"
+
+      - name: Force Push
         env:
           API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          args: public ardelio
+        run: |
+          cd public
+          git push --force --quiet "https://${API_TOKEN_GITHUB}@github.com/ardelio/ardelio.github.io.git" master:master 2>%1 > /dev/null

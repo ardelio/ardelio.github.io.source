@@ -5,7 +5,7 @@
   "version": "0.1.0",
   "license": "0BSD",
   "scripts": {
-    "build": "npx gatsby build",
+    "build": "npx gatsby build && cp CNAME public/.",
     "develop": "npx gatsby develop",
     "format": "npx prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
     "start": "npm run develop",
