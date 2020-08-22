@@ -17,13 +17,13 @@ jobs:
         if: steps.cache-node-modules.outputs.cache-hit != 'true'
         run: yarn
 
-      - name: build
+      - name: Build Static Files
         run: yarn build
 
-      - name: add:cname
+      - name: Add CNAME to Build
         run: cp CNAME public/.
 
-      - name: publish
+      - name: Publish
         uses: johno/actions-push-subdirectories@master
         env:
           API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
