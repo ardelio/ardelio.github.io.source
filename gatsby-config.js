@@ -10,6 +10,7 @@ module.exports = {
     siteUrl: `https://ardel.io`,
     description: `A window into the mind of Anthony Sceresini`,
   },
+  trailingSlash: `never`,
   plugins: [
     {
       resolve: `gatsby-source-filesystem`,
