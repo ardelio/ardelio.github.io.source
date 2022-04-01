@@ -4,6 +4,9 @@
   "description": "ardel.io website",
   "version": "0.1.0",
   "license": "0BSD",
+  "engines": {
+    "node": "16"
+  },
   "scripts": {
     "build": "npx gatsby build && cp CNAME public/.",
     "develop": "npx gatsby develop",
@@ -14,13 +17,13 @@
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
   },
   "dependencies": {
-    "gatsby": "^2.24.47",
-    "react": "^16.12.0",
-    "react-dom": "^16.12.0"
+    "gatsby": "^4.11.1",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0"
   },
   "devDependencies": {
-    "gatsby-cli": "^2.12.87",
-    "prettier": "2.0.5"
+    "gatsby-cli": "^4.11.1",
+    "prettier": "^2.6.1"
   },
   "repository": {
     "type": "git",
