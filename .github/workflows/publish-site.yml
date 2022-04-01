@@ -20,17 +20,13 @@ jobs:
       - name: Build Static Files
         run: yarn build
 
-      - name: Prepare Commit
-        run: |
-          cd public
-          git init .
-          git add --all
-          git -c user.email=asceresini@gmail.com -c user.name='GitHub Actions' commit -m "Site update at ${DATE}"
-
-      - name: Force Push
+      - name: Push to ardelio.github.io
+        uses: cpina/github-action-push-to-another-repository@main
         env:
           API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          cd public
-          git push --force --quiet "https://${API_TOKEN_GITHUB}@github.com/ardelio/ardelio.github.io.git" master:master 2>%1 > /dev/null
+        with:
+          source-directory: 'public'
+          destination-github-username: 'ardelio'
+          destination-repository-name: 'ardelio.github.io'
+          user-email: asceresini@gmail.com
+          target-branch: main
