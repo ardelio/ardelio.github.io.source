@@ -5,7 +5,11 @@
  */
 
 module.exports = {
-  /* Your site config here */
+  siteMetadata: {
+    title: `Ardelio`,
+    siteUrl: `https://ardel.io`,
+    description: `A window into the mind of Anthony Sceresini`,
+  },
   plugins: [
     {
       resolve: `gatsby-source-filesystem`,
