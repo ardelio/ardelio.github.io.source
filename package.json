@@ -23,6 +23,8 @@
   },
   "devDependencies": {
     "gatsby-cli": "^4.11.1",
+    "gatsby-source-filesystem": "^4.11.1",
+    "gatsby-transformer-remark": "^5.11.1",
     "prettier": "^2.6.1"
   },
   "repository": {
