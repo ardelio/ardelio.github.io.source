@@ -11,6 +11,16 @@ export const SOCIALS = {
     url: 'https://linkedin.com/in/${}',
     username: 'asceresini',
   },
+  INSTAGRAM: {
+    name: 'Instagram',
+    url: 'https://www.instagram.com/${}',
+    username: 'onemallardgames',
+  },
+  REDDIT: {
+    name: 'Reddit',
+    url: 'https://www.reddit.com/user/${}',
+    username: 'ardel_io',
+  },
   TWITTER: {
     name: 'Twitter',
     url: 'https://twitter.com/${}',

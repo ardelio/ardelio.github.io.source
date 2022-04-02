@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types'
-import { Link, Paper, Stack, Typography } from '@mui/material';
-import { Box } from '@mui/system';
+import { Box, Link, Paper, Stack, Typography } from '@mui/material';
 
 const BORDER_RADIUS = 1;
 const BORDER_WIDTH = 2;
@@ -35,7 +34,11 @@ export default function Feature({ feature }) {
             height={HEIGHT}
             justifyContent="center"
           >
-            <Typography>{feature.name}</Typography>
+            <Typography
+              variant='h4'
+            >
+              {feature.name}
+            </Typography>
           </Stack>
         </Link>
       </Paper>
