@@ -9,7 +9,7 @@
   },
   "scripts": {
     "build": "npx gatsby build && cp CNAME public/.",
-    "develop": "npx gatsby develop",
+    "develop": "npx gatsby clean && npx gatsby develop",
     "format": "npx prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
     "start": "npm run develop",
     "serve": "npx gatsby serve",

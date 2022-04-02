@@ -1,21 +1,24 @@
 import { red } from '@mui/material/colors';
 import { createTheme } from '@mui/material/styles';
 
+const primary = '#000';
+const secondary = 'rgb(255, 168, 53)';
+
 // A custom theme for this app
 const theme = createTheme({
   palette: {
+
     background: {
-      default: '#111111',
-      component: '#222222',
+      default: secondary,
     },
     text: {
-      primary: '#ffffff',
+      primary,
     },
     primary: {
-      main: '#556cd6',
+      main: primary,
     },
     secondary: {
-      main: '#19857b',
+      main: secondary,
     },
     error: {
       main: red.A400,
