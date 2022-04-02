@@ -19,6 +19,9 @@ module.exports = {
         path: `${__dirname}/src/markdown-pages`,
       },
     },
-    'gatsby-transformer-remark'
+    `gatsby-transformer-remark`,
+    'gatsby-plugin-top-layout',
+    'gatsby-plugin-react-helmet',
+    'gatsby-plugin-mui-emotion',
   ],
 }

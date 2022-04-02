@@ -3,7 +3,7 @@ import { graphql } from "gatsby"
 
 import PostLink from "../../components/post-link"
 
-export default function IndexPage({
+export default function Blog({
   data: {
     allMarkdownRemark: { edges },
   },
