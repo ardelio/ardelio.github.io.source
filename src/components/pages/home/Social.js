@@ -9,6 +9,7 @@ import { Link } from '@mui/material';
 export default function Social({ social }) {
   return (
     <Link
+      title={`@${social.username}`}
       href={social.url.replace('${}', social.username)}
       target='blank'
     >
