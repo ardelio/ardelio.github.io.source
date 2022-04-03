@@ -14,7 +14,7 @@ export const SOCIALS = {
   INSTAGRAM: {
     name: 'Instagram',
     url: 'https://www.instagram.com/${}',
-    username: 'onemallardgames',
+    username: 'ardel_io',
   },
   REDDIT: {
     name: 'Reddit',
