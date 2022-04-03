@@ -26,7 +26,6 @@ export default function Feature({ feature }) {
 
         <Link
           href={feature.url}
-          target='blank'
           underline='none'
         >
           <Stack

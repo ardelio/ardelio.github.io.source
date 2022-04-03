@@ -1,8 +1,13 @@
 export const FEATURES = {
   BLOG: {
     name: 'Blog',
-    url: 'https://ardel.io/blog',
+    url: '/blog',
   },
+}
+
+export const HOME = {
+  name: 'Home',
+  url: '/',
 }
 
 export const SOCIALS = {

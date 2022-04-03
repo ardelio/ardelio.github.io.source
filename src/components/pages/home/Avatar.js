@@ -4,8 +4,8 @@ import { StaticImage } from 'gatsby-plugin-image'
 
 import theme from '../../../theme'
 
-const BORDER_RADIUS = 1;
-const BORDER_WIDTH = 2;
+const BORDER_RADIUS = '50%';
+const BORDER_WIDTH = '2px';
 const DIMENSION = 100
 
 // https://www.gatsbyjs.com/plugins/gatsby-plugin-image
@@ -23,8 +23,8 @@ export default function Avatar() {
         width={DIMENSION}
         height={DIMENSION}
         imgStyle={{
-          border: `2px solid ${theme.palette.primary.main}`,
-          borderRadius: '50%',
+          border: `${BORDER_WIDTH} solid ${theme.palette.primary.main}`,
+          borderRadius: BORDER_RADIUS,
         }}
       />
     </Stack>
