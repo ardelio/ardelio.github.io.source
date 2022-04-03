@@ -5,10 +5,14 @@ import { Box, Container, Stack } from '@mui/material'
 import AppBar from '../../components/pages/blog/AppBar'
 import { FEATURES } from '../../constants'
 import Post from '../../components/pages/blog/Post'
+import TagDrawer from '../../components/pages/blog/TagDrawer'
 
 export default function Blog({
   data: {
-    allMarkdownRemark: { edges },
+    allMarkdownRemark: {
+      distinct,
+      edges
+    },
   },
 }) {
   const Posts = edges
@@ -24,6 +28,7 @@ export default function Blog({
         {SPACER}
         {Posts}
       </Stack>
+      <TagDrawer tags={distinct} />
     </Container>
   )
 }
@@ -31,6 +36,7 @@ export default function Blog({
 export const pageQuery = graphql`
   query {
     allMarkdownRemark(sort: { order: DESC, fields: [frontmatter___date] }) {
+      distinct(field: frontmatter___tags)
       edges {
         node {
           id

@@ -45,7 +45,7 @@ export default function Post({ post }) {
             <Typography gutterBottom variant="caption">
               {post.frontmatter.date}
             </Typography>
-            <Typography color="text.secondary">{post.excerpt}</Typography>
+            <Typography variant="body2">{post.excerpt}</Typography>
             <Grid container mt={2} spacing={1}>
               {tags.map(tag => (
                 <Grid item>

@@ -1,9 +1,10 @@
-import { red } from '@mui/material/colors';
-import { createTheme } from '@mui/material/styles';
+import { red } from '@mui/material/colors'
+import { createTheme } from '@mui/material/styles'
 
-const primary = '#000';
-const secondaries = ['#ffa835', '#35ffab', '#35f2ff'];
-const secondary = secondaries[getRandomInt(0, secondaries.length)];
+const primary = '#000'
+const disabled = '#444'
+const secondaries = ['#ffa835', '#35ffab', '#35f2ff']
+const secondary = secondaries[getRandomInt(0, secondaries.length)]
 
 // A custom theme for this app
 const theme = createTheme({
@@ -13,6 +14,8 @@ const theme = createTheme({
     },
     text: {
       primary,
+      secondary,
+      disabled,
     },
     primary: {
       main: primary,
@@ -24,12 +27,12 @@ const theme = createTheme({
       main: red.A400,
     },
   },
-});
+})
 
-export default theme;
+export default theme
 
 function getRandomInt(min, max) {
-  min = Math.ceil(min);
-  max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min) + min); //The maximum is exclusive and the minimum is inclusive
+  min = Math.ceil(min)
+  max = Math.floor(max)
+  return Math.floor(Math.random() * (max - min) + min) //The maximum is exclusive and the minimum is inclusive
 }
