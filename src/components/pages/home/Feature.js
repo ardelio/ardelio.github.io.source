@@ -42,7 +42,7 @@ export default function Feature({ feature }) {
           width: '100%',
         })}
         variant="outlined"
-      ></Paper>
+      />
     </Box>
   )
 }
