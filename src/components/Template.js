@@ -1,10 +1,6 @@
 import React from 'react'
-import { Box } from '@mui/material';
+import { Box } from '@mui/material'
 
 export default function Template() {
-  return (
-    <Box>
-      Template
-    </Box>
-  );
+  return <Box>Template</Box>
 }

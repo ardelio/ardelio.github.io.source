@@ -4,18 +4,15 @@ import { StaticImage } from 'gatsby-plugin-image'
 
 import theme from '../../../theme'
 
-const BORDER_RADIUS = '50%';
-const BORDER_WIDTH = '2px';
+const BORDER_RADIUS = '50%'
+const BORDER_WIDTH = '2px'
 const DIMENSION = 100
 
 // https://www.gatsbyjs.com/plugins/gatsby-plugin-image
 
 export default function Avatar() {
   return (
-    <Stack
-      alignItems="center"
-      justifyContent="center"
-    >
+    <Stack alignItems="center" justifyContent="center">
       <StaticImage
         src="../../../images/avatar.png"
         alt="Ardelio avatar"
@@ -28,5 +25,5 @@ export default function Avatar() {
         }}
       />
     </Stack>
-  );
+  )
 }

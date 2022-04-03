@@ -1,8 +1,14 @@
-import React from 'react';
+import React from 'react'
 import PropTypes from 'prop-types'
-import { SOCIALS } from '../../../constants';
-import { GitHub, Instagram, LinkedIn, Reddit, Twitter } from '@mui/icons-material';
-import { Link } from '@mui/material';
+import { SOCIALS } from '../../../constants'
+import {
+  GitHub,
+  Instagram,
+  LinkedIn,
+  Reddit,
+  Twitter,
+} from '@mui/icons-material'
+import { Link } from '@mui/material'
 
 // https://mui.com/components/material-icons/
 
@@ -11,11 +17,11 @@ export default function Social({ social }) {
     <Link
       title={`@${social.username}`}
       href={social.url.replace('${}', social.username)}
-      target='blank'
+      target="blank"
     >
       {getIcon(social.name)}
     </Link>
-  );
+  )
 }
 
 Social.propTypes = {

@@ -1,11 +1,11 @@
-import React from 'react';
+import React from 'react'
 import PropTypes from 'prop-types'
-import { Box, Link, Paper, Stack, Typography } from '@mui/material';
+import { Box, Link, Paper, Stack, Typography } from '@mui/material'
 
-const BORDER_RADIUS = 1;
-const BORDER_WIDTH = 2;
-const HEIGHT = 100;
-const SHADOW_OFFSET = 12;
+const BORDER_RADIUS = 1
+const BORDER_WIDTH = 2
+const HEIGHT = 100
+const SHADOW_OFFSET = 12
 
 export default function Feature({ feature }) {
   return (
@@ -16,33 +16,21 @@ export default function Feature({ feature }) {
     >
       <Paper
         elevation={0}
-        sx={(theme) => ({
+        sx={theme => ({
           borderColor: theme.palette.primary.main,
           borderRadius: BORDER_RADIUS,
           borderWidth: BORDER_WIDTH,
         })}
-        variant='outlined'
+        variant="outlined"
       >
-
-        <Link
-          href={feature.url}
-          underline='none'
-        >
-          <Stack
-            alignItems="center"
-            height={HEIGHT}
-            justifyContent="center"
-          >
-            <Typography
-              variant='h4'
-            >
-              {feature.name}
-            </Typography>
+        <Link href={feature.url} underline="none">
+          <Stack alignItems="center" height={HEIGHT} justifyContent="center">
+            <Typography variant="h4">{feature.name}</Typography>
           </Stack>
         </Link>
       </Paper>
       <Paper
-        sx={(theme) => ({
+        sx={theme => ({
           backgroundColor: theme.palette.primary.main,
           position: 'absolute',
           zIndex: '-11',
@@ -53,10 +41,10 @@ export default function Feature({ feature }) {
           height: '100%',
           width: '100%',
         })}
-        variant='outlined'
+        variant="outlined"
       ></Paper>
     </Box>
-  );
+  )
 }
 
 Feature.propTypes = {

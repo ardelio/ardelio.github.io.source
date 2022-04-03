@@ -10,10 +10,7 @@ export default function Index() {
   const SPACER = <Box />
   return (
     <Container>
-      <Stack
-        spacing={6}
-        sx={{ height: '100%', width: '100%' }}
-      >
+      <Stack spacing={6} sx={{ height: '100%', width: '100%' }}>
         {SPACER}
         <Avatar />
         <Username />
