@@ -20,8 +20,10 @@ module.exports = {
       },
     },
     `gatsby-transformer-remark`,
-    'gatsby-plugin-top-layout',
-    'gatsby-plugin-react-helmet',
-    'gatsby-plugin-mui-emotion',
+    `gatsby-plugin-top-layout`,
+    `gatsby-plugin-react-helmet`,
+    `gatsby-plugin-mui-emotion`,
+    `gatsby-plugin-image`,
+    `gatsby-plugin-sharp`
   ],
 }

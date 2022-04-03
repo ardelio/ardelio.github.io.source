@@ -45,7 +45,6 @@ export default function Feature({ feature }) {
       <Paper
         sx={(theme) => ({
           backgroundColor: theme.palette.primary.main,
-          height: HEIGHT,
           position: 'absolute',
           zIndex: '-11',
           top: SHADOW_OFFSET,
