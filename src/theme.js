@@ -2,12 +2,12 @@ import { red } from '@mui/material/colors';
 import { createTheme } from '@mui/material/styles';
 
 const primary = '#000';
-const secondary = 'rgb(255, 168, 53)';
+const secondaries = ['#ffa835', '#35ffab', '#35f2ff'];
+const secondary = secondaries[getRandomInt(0, secondaries.length)];
 
 // A custom theme for this app
 const theme = createTheme({
   palette: {
-
     background: {
       default: secondary,
     },
@@ -27,3 +27,9 @@ const theme = createTheme({
 });
 
 export default theme;
+
+function getRandomInt(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min) + min); //The maximum is exclusive and the minimum is inclusive
+}
