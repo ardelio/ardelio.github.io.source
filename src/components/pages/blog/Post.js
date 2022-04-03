@@ -1,35 +1,29 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import {
-  Box,
   Card,
   CardActions,
   CardContent,
   CardMedia,
   Chip,
   Grid,
-  Paper,
   Stack,
   Typography,
 } from '@mui/material'
 import { Button, Link } from 'gatsby-theme-material-ui'
 import { getSrcSet } from 'gatsby-plugin-image'
+import WithShadow from '../../WithShadow'
 
 const BORDER_RADIUS = 1
 const BORDER_WIDTH = '2px'
 const IMAGE_HEIGHT = '150px'
-const SHADOW_OFFSET = 12
 
 export default function Post({ post }) {
   const imageSrcSet = getSrcSet(post.frontmatter.featuredImage)
   const tags = [...new Set(post.frontmatter.tags)]
   return (
     <Stack alignItems="center">
-      <Box
-        sx={{
-          position: 'relative',
-        }}
-      >
+      <WithShadow>
         <Card
           sx={theme => ({
             maxWidth: 500,
@@ -68,21 +62,7 @@ export default function Post({ post }) {
             </Button>
           </CardActions>
         </Card>
-        <Paper
-          sx={theme => ({
-            backgroundColor: theme.palette.primary.main,
-            position: 'absolute',
-            zIndex: '-11',
-            top: SHADOW_OFFSET,
-            left: SHADOW_OFFSET,
-            borderRadius: BORDER_RADIUS,
-            borderWidth: BORDER_WIDTH,
-            height: '100%',
-            width: '100%',
-          })}
-          variant="outlined"
-        />
-      </Box>
+      </WithShadow>
     </Stack>
   )
 }
