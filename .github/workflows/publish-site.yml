@@ -18,7 +18,7 @@ jobs:
         run: yarn
 
       - name: Build Static Files
-        run: yarn build
+        run: yarn clean && yarn build
 
       - name: Push to ardelio.github.io
         uses: cpina/github-action-push-to-another-repository@main
