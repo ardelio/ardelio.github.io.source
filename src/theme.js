@@ -19,10 +19,12 @@ const theme = createTheme({
     },
     primary: {
       main: primary,
+      light: '#666',
     },
     secondary: {
       main: secondary,
     },
+
     error: {
       main: red.A400,
     },

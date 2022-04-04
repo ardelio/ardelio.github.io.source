@@ -20,7 +20,7 @@ export default function Blog({
 
   return (
     <Container>
-      <AppBar pageName={FEATURES.BLOG.name} pageUrl={FEATURES.BLOG.url} />
+      <AppBar pageTitle={FEATURES.BLOG.name} pageUrl={FEATURES.BLOG.url} />
       <Stack spacing={6} sx={{ height: '100%', width: '100%' }}>
         {SPACER}
         {Posts}

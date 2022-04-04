@@ -1,7 +1,7 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 import { Box, Container, Stack } from '@mui/material'
-import startcase from 'lodash.startcase';
+import startcase from 'lodash.startcase'
 
 import AppBar from '../components/pages/blog/AppBar'
 import TagDrawer from '../components/pages/blog/TagDrawer'
@@ -13,9 +13,7 @@ export default function Tag({
     allPosts: { distinctTags },
     filteredPosts: { edges },
   },
-  pageContext: {
-    tag
-  }
+  pageContext: { tag },
 }) {
   const Posts = edges
     .filter(edge => !!edge.node.frontmatter.date) // You can filter your posts based on some criteria
@@ -25,12 +23,16 @@ export default function Tag({
 
   return (
     <Container>
-      <AppBar pageName={`${FEATURES.BLOG.name} (tag: ${startcase(tag)})`} pageUrl="N/A" />
+      <AppBar
+        pageSubtitle={`(tag: ${startcase(tag)})`}
+        pageTitle={FEATURES.BLOG.name}
+        pageUrl="N/A"
+      />
       <Stack spacing={6} sx={{ height: '100%', width: '100%' }}>
         {SPACER}
         {Posts}
       </Stack>
-      <TagDrawer tags={distinctTags} /> {/*add a focus here*/}
+      <TagDrawer selected={tag} tags={distinctTags} />
     </Container>
   )
 }

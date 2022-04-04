@@ -5,17 +5,18 @@ import {
   Box,
   Button,
   IconButton,
-  Link,
   Menu,
   MenuItem,
+  Stack,
   Toolbar,
   Typography,
 } from '@mui/material'
 import { Menu as MenuIcon } from '@mui/icons-material'
+import { Link } from 'gatsby-theme-material-ui'
 
 import { FEATURES, HOME } from '../../../constants'
 
-export default function AppBar({ pageName, pageUrl }) {
+export default function AppBar({ pageSubtitle, pageTitle, pageUrl }) {
   const [anchorEl, setAnchorEl] = React.useState(null)
   const open = Boolean(anchorEl)
   const handleClick = event => {
@@ -37,7 +38,6 @@ export default function AppBar({ pageName, pageUrl }) {
       >
         <Toolbar>
           <Button
-            href={HOME.url}
             variant="outlined"
             sx={{
               border: '2px solid',
@@ -46,12 +46,22 @@ export default function AppBar({ pageName, pageUrl }) {
               },
             }}
           >
-            <Typography>Ardelio</Typography>
+            <Link to={HOME.url} underline="none">
+              <Typography>Ardelio</Typography>
+            </Link>
           </Button>
-          <Typography ml={8} variant="h5" component="div" sx={{ flexGrow: 1 }}>
-            {pageName}
-          </Typography>
-
+          <Stack
+            direction="row"
+            alignItems="center"
+            ml={8}
+            spacing={1}
+            sx={{ flexGrow: 1 }}
+          >
+            <Typography variant="h5">{pageTitle}</Typography>
+            {pageSubtitle && (
+              <Typography variant="body2">{pageSubtitle}</Typography>
+            )}
+          </Stack>
           <IconButton
             size="large"
             edge="start"
@@ -84,7 +94,7 @@ export default function AppBar({ pageName, pageUrl }) {
               .map(feature => {
                 return (
                   <MenuItem key={feature.name} onClick={handleClose}>
-                    <Link href={feature.url} underline="none">
+                    <Link to={feature.url} underline="none">
                       <Typography>{feature.name}</Typography>
                     </Link>
                   </MenuItem>
@@ -98,6 +108,7 @@ export default function AppBar({ pageName, pageUrl }) {
 }
 
 AppBar.propTypes = {
-  pageName: PropTypes.string,
+  pageTitle: PropTypes.string,
+  pageSubtitle: PropTypes.string || undefined,
   pageUrl: PropTypes.string,
 }

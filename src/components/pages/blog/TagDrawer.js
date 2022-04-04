@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import {
   AppBar,
   Box,
+  IconButton,
   Input,
   InputAdornment,
   Stack,
@@ -10,9 +11,9 @@ import {
   Typography,
 } from '@mui/material'
 import { Button, Link } from 'gatsby-theme-material-ui'
-import { Search } from '@mui/icons-material'
+import { Clear, Search } from '@mui/icons-material'
 
-export default function TagDrawer({ tags }) {
+export default function TagDrawer({ selected, tags }) {
   const [filteredTags, setFilteredTags] = React.useState(tags)
 
   const onSearchChange = ({ target: { value } }) => {
@@ -35,10 +36,17 @@ export default function TagDrawer({ tags }) {
       sx={{ top: 'auto', bottom: 0 }}
     >
       <Toolbar sx={{ overflow: 'scroll' }}>
-        <Stack direction="row" spacing={1}>
-          <Typography mr={4} variant="h6" gridAutoFlow="row">
+        <Stack direction="row" alignItems="center" spacing={1}>
+          <Typography mr={2} variant="h6">
             Tags
           </Typography>
+          {selected && (
+            <IconButton aria-label="clear" title="Clear tag">
+              <Link to={`/blog`} underline="none" color="secondary">
+                <Clear />
+              </Link>
+            </IconButton>
+          )}
           <Box width={150}>
             <Input
               sx={{
@@ -69,5 +77,6 @@ export default function TagDrawer({ tags }) {
 }
 
 TagDrawer.propTypes = {
+  selected: PropTypes.string || undefined,
   tags: PropTypes.arrayOf(PropTypes.string),
 }

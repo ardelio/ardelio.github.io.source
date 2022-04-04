@@ -5,7 +5,6 @@ import {
   CardActions,
   CardContent,
   CardMedia,
-  Chip,
   Grid,
   Stack,
   Typography,
@@ -48,8 +47,24 @@ export default function Post({ post }) {
             <Typography variant="body2">{post.excerpt}</Typography>
             <Grid container mt={2} spacing={1}>
               {tags.map(tag => (
-                <Grid item>
-                  <Chip color="primary" label={tag} />
+                <Grid item key={`${post.id}-${tag}`}>
+                  <Button
+                    size="small"
+                    sx={theme => ({
+                      backgroundColor: theme.palette.primary.main,
+                      '&:hover': {
+                        backgroundColor: theme.palette.primary.light,
+                      },
+                    })}
+                  >
+                    <Link
+                      to={`/blog/tags/${tag}`}
+                      underline="none"
+                      color="white"
+                    >
+                      {tag}
+                    </Link>
+                  </Button>
                 </Grid>
               ))}
             </Grid>
@@ -69,6 +84,7 @@ export default function Post({ post }) {
 
 Post.propTypes = {
   post: PropTypes.shape({
+    id: PropTypes.string,
     excerpt: PropTypes.string,
     frontmatter: PropTypes.shape({
       slug: PropTypes.string,

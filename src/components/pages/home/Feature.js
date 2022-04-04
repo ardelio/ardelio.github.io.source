@@ -1,6 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Link, Paper, Stack, Typography } from '@mui/material'
+import { Paper, Stack, Typography } from '@mui/material'
+import { Link } from 'gatsby-theme-material-ui'
+
 import WithShadow from '../../WithShadow'
 
 const BORDER_RADIUS = 1
@@ -19,7 +21,7 @@ export default function Feature({ feature }) {
         })}
         variant="outlined"
       >
-        <Link href={feature.url} underline="none">
+        <Link to={feature.url} underline="none">
           <Stack alignItems="center" height={HEIGHT} justifyContent="center">
             <Typography variant="h4">{feature.name}</Typography>
           </Stack>
