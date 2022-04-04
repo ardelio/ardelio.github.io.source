@@ -15,13 +15,17 @@ import { Search } from '@mui/icons-material'
 export default function TagDrawer({ tags }) {
   const [filteredTags, setFilteredTags] = React.useState(tags)
 
-  const onSearchChange = ({ target: { value }}) => {
+  const onSearchChange = ({ target: { value } }) => {
     if (value === '') {
-      setFilteredTags(tags);
+      setFilteredTags(tags)
     } else {
-      setFilteredTags(tags.filter(tag => Boolean(tag.match(value))))
+      setFilteredTags(
+        tags.filter(tag =>
+          Boolean(tag.toLowerCase().match(value.toLowerCase()))
+        )
+      )
     }
-  };
+  }
 
   return (
     <AppBar
