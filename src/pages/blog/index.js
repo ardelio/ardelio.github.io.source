@@ -9,10 +9,7 @@ import TagDrawer from '../../components/pages/blog/TagDrawer'
 
 export default function Blog({
   data: {
-    allMarkdownRemark: {
-      distinct,
-      edges
-    },
+    allPosts: { distinctTags, edges },
   },
 }) {
   const Posts = edges
@@ -23,20 +20,20 @@ export default function Blog({
 
   return (
     <Container>
-      <AppBar pageUrl={FEATURES.BLOG.url} />
+      <AppBar pageName={FEATURES.BLOG.name} pageUrl={FEATURES.BLOG.url} />
       <Stack spacing={6} sx={{ height: '100%', width: '100%' }}>
         {SPACER}
         {Posts}
       </Stack>
-      <TagDrawer tags={distinct} />
+      <TagDrawer tags={distinctTags} />
     </Container>
   )
 }
 
 export const pageQuery = graphql`
   query {
-    allMarkdownRemark(sort: { order: DESC, fields: [frontmatter___date] }) {
-      distinct(field: frontmatter___tags)
+    allPosts: allMarkdownRemark(sort: { order: DESC, fields: [frontmatter___date] }) {
+      distinctTags: distinct(field: frontmatter___tags)
       edges {
         node {
           id

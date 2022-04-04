@@ -15,7 +15,7 @@ import { Menu as MenuIcon } from '@mui/icons-material'
 
 import { FEATURES, HOME } from '../../../constants'
 
-export default function AppBar({ pageUrl }) {
+export default function AppBar({ pageName, pageUrl }) {
   const [anchorEl, setAnchorEl] = React.useState(null)
   const open = Boolean(anchorEl)
   const handleClick = event => {
@@ -49,7 +49,7 @@ export default function AppBar({ pageUrl }) {
             <Typography>Ardelio</Typography>
           </Button>
           <Typography ml={8} variant="h5" component="div" sx={{ flexGrow: 1 }}>
-            Blog
+            {pageName}
           </Typography>
 
           <IconButton
@@ -98,5 +98,6 @@ export default function AppBar({ pageUrl }) {
 }
 
 AppBar.propTypes = {
+  pageName: PropTypes.string,
   pageUrl: PropTypes.string,
 }
