@@ -15,7 +15,7 @@ export default function Index() {
         <Avatar />
         <Username />
         <Socials />
-        <Features />
+        {/* <Features /> */}
       </Stack>
     </Container>
   )
