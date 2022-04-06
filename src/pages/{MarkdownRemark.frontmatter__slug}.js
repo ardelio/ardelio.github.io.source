@@ -1,33 +1,51 @@
 import React from 'react'
 import { graphql } from 'gatsby'
+import { Box, Container, Stack } from '@mui/material'
+
+import AppBar from '../components/pages/blog/AppBar'
+import { FEATURES } from '../constants'
+import Post from '../components/pages/blog/Post'
+import TagDrawer from '../components/pages/blog/TagDrawer'
 
 export default function Template({
-  data, // this prop will be injected by the GraphQL query below.
+  data: {
+    allPosts: { distinctTags },
+    post: { frontmatter, html, id },
+  },
 }) {
-  const { markdownRemark } = data // data.markdownRemark holds your post data
-  const { frontmatter, html } = markdownRemark
+  const SPACER = <Box />
+  const BOTTOM_SPACER = <Box height="50px" />
+
   return (
-    <div className="blog-post-container">
-      <div className="blog-post">
-        <h1>{frontmatter.title}</h1>
-        <h2>{frontmatter.date}</h2>
-        <div
-          className="blog-post-content"
-          dangerouslySetInnerHTML={{ __html: html }}
-        />
-      </div>
-    </div>
+    <Container>
+      <AppBar
+        pageSubtitle={`(post: ${frontmatter.title})`}
+        pageTitle={FEATURES.BLOG.name}
+        pageUrl="N/A"
+      />
+      <Stack spacing={6} sx={{ height: '100%', width: '100%' }}>
+        {SPACER}
+        <Post {...frontmatter} html={html} id={id} />
+        <TagDrawer tags={distinctTags} />
+        {BOTTOM_SPACER}
+      </Stack>
+    </Container>
   )
 }
 
 export const pageQuery = graphql`
   query ($id: String!) {
-    markdownRemark(id: { eq: $id }) {
+    allPosts: allMarkdownRemark {
+      distinctTags: distinct(field: frontmatter___tags)
+    }
+    post: markdownRemark(id: { eq: $id }) {
       html
+      id
       frontmatter {
         date(formatString: "MMMM DD, YYYY")
         slug
         title
+        tags
       }
     }
   }

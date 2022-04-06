@@ -5,7 +5,7 @@ import startcase from 'lodash.startcase'
 
 import AppBar from '../components/pages/blog/AppBar'
 import TagDrawer from '../components/pages/blog/TagDrawer'
-import Post from '../components/pages/blog/Post'
+import PostCard from '../components/pages/blog/PostCard'
 import { FEATURES } from '../constants'
 
 export default function Tag({
@@ -17,9 +17,10 @@ export default function Tag({
 }) {
   const Posts = edges
     .filter(edge => !!edge.node.frontmatter.date) // You can filter your posts based on some criteria
-    .map(edge => <Post key={edge.node.id} post={edge.node} />)
+    .map(edge => <PostCard key={edge.node.id} post={edge.node} />)
 
   const SPACER = <Box />
+  const BOTTOM_SPACER = <Box height="50px" />
 
   return (
     <Container>
@@ -31,6 +32,7 @@ export default function Tag({
       <Stack spacing={6} sx={{ height: '100%', width: '100%' }}>
         {SPACER}
         {Posts}
+        {BOTTOM_SPACER}
       </Stack>
       <TagDrawer selected={tag} tags={distinctTags} />
     </Container>

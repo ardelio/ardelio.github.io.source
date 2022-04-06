@@ -3,7 +3,7 @@ import { createTheme } from '@mui/material/styles'
 
 const primary = '#000'
 const disabled = '#444'
-const secondaries = ['#ffa835', '#35ffab', '#35f2ff']
+const secondaries = ['#ffa835']; //, '#35ffab', '#35f2ff']
 const secondary = secondaries[getRandomInt(0, secondaries.length)]
 
 // A custom theme for this app

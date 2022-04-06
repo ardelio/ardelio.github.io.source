@@ -1,53 +1,37 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import {
-  Card,
-  CardActions,
-  CardContent,
-  CardMedia,
-  Grid,
-  Stack,
-  Typography,
-} from '@mui/material'
-import { Button, Link } from 'gatsby-theme-material-ui'
-import { getSrcSet } from 'gatsby-plugin-image'
+import { Box, Button, Card, CardContent, Grid, Typography } from '@mui/material'
+
 import WithShadow from '../../WithShadow'
+import { Link } from 'gatsby-theme-material-ui'
 
 const BORDER_RADIUS = 1
 const BORDER_WIDTH = '2px'
-const IMAGE_HEIGHT = '150px'
 
-export default function Post({ post }) {
-  const imageSrcSet = getSrcSet(post.frontmatter.featuredImage)
-  const tags = [...new Set(post.frontmatter.tags)]
+export default function Post({ date, html, tags, title, id }) {
   return (
-    <Stack alignItems="center">
+    <Box>
       <WithShadow>
         <Card
           sx={theme => ({
-            maxWidth: 500,
             border: `${BORDER_WIDTH} solid ${theme.palette.primary.main}`,
             borderRadius: BORDER_RADIUS,
           })}
           variant="outlined"
         >
-          <CardMedia
-            component="img"
-            height={IMAGE_HEIGHT}
-            alt={post.frontmatter.featuredImageAlt}
-            srcSet={imageSrcSet}
-          />
           <CardContent>
             <Typography gutterBottom variant="h4" component="div">
-              {post.frontmatter.title}
+              {title}
             </Typography>
             <Typography gutterBottom variant="caption">
-              {post.frontmatter.date}
+              {date}
             </Typography>
-            <Typography variant="body2">{post.excerpt}</Typography>
+            <Typography>
+              <div dangerouslySetInnerHTML={{ __html: html }} />
+            </Typography>
             <Grid container mt={2} spacing={1}>
               {tags.map(tag => (
-                <Grid item key={`${post.id}-${tag}`}>
+                <Grid item key={`${id}-${tag}`}>
                   <Button
                     size="small"
                     sx={theme => ({
@@ -69,36 +53,16 @@ export default function Post({ post }) {
               ))}
             </Grid>
           </CardContent>
-          <CardActions>
-            <Button size="small">
-              <Link to={post.frontmatter.slug} underline="none">
-                Read more
-              </Link>
-            </Button>
-          </CardActions>
         </Card>
       </WithShadow>
-    </Stack>
+    </Box>
   )
 }
 
 Post.propTypes = {
-  post: PropTypes.shape({
-    id: PropTypes.string,
-    excerpt: PropTypes.string,
-    frontmatter: PropTypes.shape({
-      slug: PropTypes.string,
-      date: PropTypes.string,
-      tags: PropTypes.arrayOf(PropTypes.string),
-      title: PropTypes.string,
-      featuredImage: PropTypes.shape({
-        childImageSharp: PropTypes.shape({
-          fluid: PropTypes.shape({
-            src: PropTypes.string,
-          }),
-        }),
-      }),
-      featuredImageAlt: PropTypes.string,
-    }),
-  }),
+  date: PropTypes.string,
+  html: PropTypes.string,
+  id: PropTypes.string,
+  tags: PropTypes.arrayOf(PropTypes.string),
+  title: PropTypes.string,
 }

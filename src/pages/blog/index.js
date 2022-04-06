@@ -4,7 +4,7 @@ import { Box, Container, Stack } from '@mui/material'
 
 import AppBar from '../../components/pages/blog/AppBar'
 import { FEATURES } from '../../constants'
-import Post from '../../components/pages/blog/Post'
+import PostCard from '../../components/pages/blog/PostCard'
 import TagDrawer from '../../components/pages/blog/TagDrawer'
 
 export default function Blog({
@@ -14,9 +14,10 @@ export default function Blog({
 }) {
   const Posts = edges
     .filter(edge => !!edge.node.frontmatter.date) // You can filter your posts based on some criteria
-    .map(edge => <Post key={edge.node.id} post={edge.node} />)
+    .map(edge => <PostCard key={edge.node.id} post={edge.node} />)
 
   const SPACER = <Box />
+  const BOTTOM_SPACER = <Box height="50px" />
 
   return (
     <Container>
@@ -24,6 +25,7 @@ export default function Blog({
       <Stack spacing={6} sx={{ height: '100%', width: '100%' }}>
         {SPACER}
         {Posts}
+        {BOTTOM_SPACER}
       </Stack>
       <TagDrawer tags={distinctTags} />
     </Container>
@@ -32,7 +34,9 @@ export default function Blog({
 
 export const pageQuery = graphql`
   query {
-    allPosts: allMarkdownRemark(sort: { order: DESC, fields: [frontmatter___date] }) {
+    allPosts: allMarkdownRemark(
+      sort: { order: DESC, fields: [frontmatter___date] }
+    ) {
       distinctTags: distinct(field: frontmatter___tags)
       edges {
         node {
