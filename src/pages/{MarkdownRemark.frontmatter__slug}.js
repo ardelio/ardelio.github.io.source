@@ -9,8 +9,8 @@ import TagDrawer from '../components/pages/blog/TagDrawer'
 
 export default function Template({
   data: {
-    allPosts: { distinctTags },
-    post: { frontmatter, html, id },
+    allPublishedPosts: { distinctTags },
+    publishedPost: { frontmatter, html, id },
   },
 }) {
   const SPACER = <Box />
@@ -35,10 +35,15 @@ export default function Template({
 
 export const pageQuery = graphql`
   query ($id: String!) {
-    allPosts: allMarkdownRemark {
+    allPublishedPosts: allMarkdownRemark(
+      filter: { frontmatter: { published: { eq: true } } }
+    ) {
       distinctTags: distinct(field: frontmatter___tags)
     }
-    post: markdownRemark(id: { eq: $id }) {
+    publishedPost: markdownRemark(
+      id: { eq: $id }
+      frontmatter: { published: { eq: true } }
+    ) {
       html
       id
       frontmatter {

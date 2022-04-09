@@ -10,8 +10,8 @@ import { FEATURES } from '../constants'
 
 export default function Tag({
   data: {
-    allPosts: { distinctTags },
-    filteredPosts: { edges },
+    allPublishedPosts: { distinctTags },
+    publishedPostsForTag: { edges },
   },
   pageContext: { tag },
 }) {
@@ -41,11 +41,13 @@ export default function Tag({
 
 export const pageQuery = graphql`
   query ($tag: String!) {
-    allPosts: allMarkdownRemark {
+    allPublishedPosts: allMarkdownRemark(
+      filter: {frontmatter: {published: {eq: true}}}
+    ) {
       distinctTags: distinct(field: frontmatter___tags)
     }
-    filteredPosts: allMarkdownRemark(
-      filter: { frontmatter: { tags: { eq: $tag } } }
+    publishedPostsForTag: allMarkdownRemark(
+      filter: { frontmatter: { tags: { eq: $tag }, published: {eq: true} } }
     ) {
       edges {
         node {

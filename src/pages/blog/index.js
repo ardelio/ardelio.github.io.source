@@ -1,6 +1,6 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-import { Box, Container, Stack } from '@mui/material'
+import { Box, Container, Stack, Typography } from '@mui/material'
 
 import AppBar from '../../components/pages/blog/AppBar'
 import { FEATURES } from '../../constants'
@@ -9,12 +9,18 @@ import TagDrawer from '../../components/pages/blog/TagDrawer'
 
 export default function Blog({
   data: {
-    allPosts: { distinctTags, edges },
+    allPublishedPosts: { distinctTags, edges },
   },
 }) {
   const Posts = edges
     .filter(edge => !!edge.node.frontmatter.date) // You can filter your posts based on some criteria
     .map(edge => <PostCard key={edge.node.id} post={edge.node} />)
+
+  const NoPosts = (
+    <Box textAlign="center">
+      <Typography>These aren't the posts you're looking for...</Typography>
+    </Box>
+  )
 
   const SPACER = <Box />
   const BOTTOM_SPACER = <Box height="50px" />
@@ -24,7 +30,7 @@ export default function Blog({
       <AppBar pageTitle={FEATURES.BLOG.name} pageUrl={FEATURES.BLOG.url} />
       <Stack spacing={6} sx={{ height: '100%', width: '100%' }}>
         {SPACER}
-        {Posts}
+        {Posts.length > 0 ? Posts : NoPosts}
         {BOTTOM_SPACER}
       </Stack>
       <TagDrawer tags={distinctTags} />
@@ -34,8 +40,9 @@ export default function Blog({
 
 export const pageQuery = graphql`
   query {
-    allPosts: allMarkdownRemark(
+    allPublishedPosts: allMarkdownRemark(
       sort: { order: DESC, fields: [frontmatter___date] }
+      filter: { frontmatter: { published: { eq: true } } }
     ) {
       distinctTags: distinct(field: frontmatter___tags)
       edges {
