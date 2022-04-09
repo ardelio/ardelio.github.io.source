@@ -1,11 +1,14 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 import { Box, Container, Stack, Typography } from '@mui/material'
+import { defineCustomElements as deckDeckGoHighlightElement } from "@deckdeckgo/highlight-code/dist/loader";
 
 import AppBar from '../components/pages/blog/AppBar'
 import { FEATURES } from '../constants'
 import Post from '../components/pages/blog/Post'
 import TagDrawer from '../components/pages/blog/TagDrawer'
+
+deckDeckGoHighlightElement();
 
 export default function Template({
   data: {
