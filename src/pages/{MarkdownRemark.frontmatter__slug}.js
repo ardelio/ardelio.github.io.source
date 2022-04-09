@@ -1,6 +1,6 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-import { Box, Container, Stack } from '@mui/material'
+import { Box, Container, Stack, Typography } from '@mui/material'
 
 import AppBar from '../components/pages/blog/AppBar'
 import { FEATURES } from '../constants'
@@ -10,7 +10,7 @@ import TagDrawer from '../components/pages/blog/TagDrawer'
 export default function Template({
   data: {
     allPublishedPosts: { distinctTags },
-    publishedPost: { frontmatter, html, id },
+    publishedPost,
   },
 }) {
   const SPACER = <Box />
@@ -19,13 +19,21 @@ export default function Template({
   return (
     <Container>
       <AppBar
-        pageSubtitle={`(post: ${frontmatter.title})`}
+        pageSubtitle={`(post: ${publishedPost?.frontmatter.title})`}
         pageTitle={FEATURES.BLOG.name}
         pageUrl="N/A"
       />
       <Stack spacing={6} sx={{ height: '100%', width: '100%' }}>
         {SPACER}
-        <Post {...frontmatter} html={html} id={id} />
+        {publishedPost ? (
+          <Post
+            {...publishedPost.frontmatter}
+            html={publishedPost.html}
+            id={publishedPost.id}
+          />
+        ) : (
+          <Typography>Something went wrong...</Typography>
+        )}
         <TagDrawer tags={distinctTags} />
         {BOTTOM_SPACER}
       </Stack>

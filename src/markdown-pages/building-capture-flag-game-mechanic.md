@@ -2,8 +2,8 @@
 slug: '/blog/building-capture-flag-game-mechanic'
 date: '2022-04-09'
 title: 'Building a capture the flag game mechanic'
-# featuredImage: ../images/avatar.png
-# featuredImageAlt: "My avatar"
+featuredImage: ../images/avatar.png
+featuredImageAlt: "My avatar"
 tags: ['development', 'game', 'unity']
 published: false
 ---
@@ -126,7 +126,7 @@ public class Village : GameObject, IStateMachine
 
     public void TransitionToState(VillageState state)
     {
-        
+
     }
 }
 
