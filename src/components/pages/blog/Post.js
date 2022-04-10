@@ -30,7 +30,7 @@ export default function Post({ date, html, tags, title, id }) {
               <div dangerouslySetInnerHTML={{ __html: html }} />
             </Typography>
             <Grid container mt={2} spacing={1}>
-              {tags.map(tag => (
+              {tags.sort().map(tag => (
                 <Grid item key={`${id}-${tag}`}>
                   <Button
                     size="small"

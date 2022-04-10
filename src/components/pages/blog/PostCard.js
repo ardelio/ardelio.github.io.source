@@ -46,7 +46,7 @@ export default function PostCard({ post }) {
             </Typography>
             <Typography variant="body2">{post.excerpt}</Typography>
             <Grid container mt={2} spacing={1}>
-              {tags.map(tag => (
+              {tags.sort().map(tag => (
                 <Grid item key={`${post.id}-${tag}`}>
                   <Button
                     size="small"

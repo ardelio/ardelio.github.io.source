@@ -6,6 +6,7 @@ import startcase from 'lodash.startcase'
 import AppBar from '../components/pages/blog/AppBar'
 import TagDrawer from '../components/pages/blog/TagDrawer'
 import PostCard from '../components/pages/blog/PostCard'
+import Socials from '../components/pages/home/Socials'
 import { FEATURES } from '../constants'
 
 export default function Tag({
@@ -31,7 +32,9 @@ export default function Tag({
       />
       <Stack spacing={6} sx={{ height: '100%', width: '100%' }}>
         {SPACER}
+        <Socials />
         {Posts}
+        {Posts.length > 3 && <Socials />}
         {BOTTOM_SPACER}
       </Stack>
       <TagDrawer selected={tag} tags={distinctTags} />

@@ -1,14 +1,15 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 import { Box, Container, Stack, Typography } from '@mui/material'
-import { defineCustomElements as deckDeckGoHighlightElement } from "@deckdeckgo/highlight-code/dist/loader";
+import { defineCustomElements as deckDeckGoHighlightElement } from '@deckdeckgo/highlight-code/dist/loader'
 
 import AppBar from '../components/pages/blog/AppBar'
 import { FEATURES } from '../constants'
 import Post from '../components/pages/blog/Post'
+import Socials from '../components/pages/home/Socials'
 import TagDrawer from '../components/pages/blog/TagDrawer'
 
-deckDeckGoHighlightElement();
+deckDeckGoHighlightElement()
 
 export default function Template({
   data: {
@@ -28,6 +29,7 @@ export default function Template({
       />
       <Stack spacing={6} sx={{ height: '100%', width: '100%' }}>
         {SPACER}
+        <Socials />
         {publishedPost ? (
           <Post
             {...publishedPost.frontmatter}
@@ -37,9 +39,10 @@ export default function Template({
         ) : (
           <Typography>Something went wrong...</Typography>
         )}
-        <TagDrawer tags={distinctTags} />
+        <Socials />
         {BOTTOM_SPACER}
       </Stack>
+      <TagDrawer tags={distinctTags} />
     </Container>
   )
 }

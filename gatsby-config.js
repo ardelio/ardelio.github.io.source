@@ -30,6 +30,7 @@ module.exports = {
               maxWidth: 1200,
             },
           },
+          `gatsby-remark-gifs`,
           {
             resolve: `gatsby-remark-highlight-code`,
             options: {

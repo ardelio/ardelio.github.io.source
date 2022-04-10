@@ -5,6 +5,7 @@ import { Box, Container, Stack, Typography } from '@mui/material'
 import AppBar from '../../components/pages/blog/AppBar'
 import { FEATURES } from '../../constants'
 import PostCard from '../../components/pages/blog/PostCard'
+import Socials from '../../components/pages/home/Socials'
 import TagDrawer from '../../components/pages/blog/TagDrawer'
 
 export default function Blog({
@@ -30,7 +31,9 @@ export default function Blog({
       <AppBar pageTitle={FEATURES.BLOG.name} pageUrl={FEATURES.BLOG.url} />
       <Stack spacing={6} sx={{ height: '100%', width: '100%' }}>
         {SPACER}
+        <Socials />
         {Posts.length > 0 ? Posts : NoPosts}
+        {Posts.length > 3 && <Socials />}
         {BOTTOM_SPACER}
       </Stack>
       <TagDrawer tags={distinctTags} />
